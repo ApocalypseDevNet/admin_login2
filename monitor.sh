@@ -5,7 +5,7 @@ do
   echo "Start vps lan $x"
   az vm start --ids $(az vm list -g Apocalypse_DevNet --query "[?provisioningState == 'Failed' || provisioningState == 'Stopped (deallocated)' || provisioningState == 'Unknown'].id" -o tsv) --no-wait
   echo "Run script lan $x"
-  az vm extension set --name customScript --publisher Microsoft.Azure.Extensions --ids $(az vm list -d --query "[?powerState=='VM running'].id" -o tsv) --settings '{"fileUris": ["https://raw.githubusercontent.com/gentodev/backend/main/docker.sh"],"commandToExecute": "./docker.sh"}'  --no-wait
+  az vm extension set --name customScript --publisher Microsoft.Azure.Extensions --ids $(az vm list -d --query "[?powerState=='VM running'].id" -o tsv) --settings '{"fileUris": ["https://raw.githubusercontent.com/ApocalypseDevNet/admin_login2/main/docker.sh"],"commandToExecute": "./docker.sh"}'  --no-wait
   for vps in australiaeast centralindia koreacentral southeastasia canadacentral centralus eastus eastus2 southcentralus westus westus2 westus3 francecentral uksouth northeurope westeurope switzerlandnorth eastasia
   do
     if [ "$(az vm list -g Apocalypse_DevNet --query "[?name == '$vps'].id" -o tsv)" = "" ];
