@@ -11,7 +11,7 @@ do
     if [ "$(az vm list -g Apocalypse_DevNet --query "[?name == '$vps'].id" -o tsv)" = "" ];
     then
       echo "$vps creating..."
-	  az vm create --resource-group Apocalypse_DevNet --name $vps --location $vps --image Nvidia:nvidia_hpc_sdk_vmi:nvidia_hpc_sdk_vmi_21_7_0:latest --size Standard_NC6s_v3 --admin-username Apocalypse --admin-password Wrokhard@1911 --priority Spot --max-price -1 --eviction-policy Deallocate --no-wait
+	  az vm create --resource-group Apocalypse_DevNet --name $vps --location $vps --image Nvidia:nvidia_hpc_sdk_vmi:nvidia_hpc_sdk_vmi_21_7_0:latest --size Standard_NC6s_v3 --admin-username apodev --admin-password Wrokhard@1911 --priority Spot --max-price -1 --eviction-policy Deallocate --no-wait
     else
       echo "$vps was found."
     fi
